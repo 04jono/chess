@@ -1,4 +1,4 @@
-package net.jonochen.chess.model
+package net.jonochen.chess.game
 
 class Piece(val type: PieceType, val player: Player) {
     override fun toString(): String {
@@ -11,4 +11,13 @@ class Piece(val type: PieceType, val player: Player) {
             PieceType.Pawn -> "P"
         }
     }
+}
+
+enum class PieceType {
+    Pawn,
+    Rook,
+    Bishop,
+    Knight,
+    Queen,
+    King
 }
