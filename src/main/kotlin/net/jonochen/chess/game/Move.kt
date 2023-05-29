@@ -8,12 +8,12 @@ data class Move(
 )
 
 fun moveBoard(bd: Board, move: Move): Board {
-  val player = bd.state.player
-  val initPiece = bd.state.pieces[move.initial]
+  val player = bd.player
+  val initPiece = bd.pieces[move.initial]
   if (initPiece == null) {
     throw IllegalMoveException("No initial piece")
   } else {
-    val newState = (bd.state.pieces - move.initial) + Pair(move.final, initPiece)
-    return Board(State(newState, nextPlayer(player)))
+    val newState = (bd.pieces - move.initial) + Pair(move.final, initPiece)
+    return Board(newState, nextPlayer(player))
   }
 }

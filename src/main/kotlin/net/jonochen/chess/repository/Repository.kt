@@ -4,5 +4,5 @@ import net.jonochen.chess.model.BoardModel
 import org.bson.types.ObjectId
 import org.springframework.data.mongodb.repository.MongoRepository
 
-interface Repository : MongoRepository<BoardModel, ObjectId> {
+interface Repository : MongoRepository<BoardModel, String> {
 }

@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class BoardModel(
 
     @Id
-    val id: ObjectId = ObjectId(),
+    val id: String = ObjectId().toString(),
 
     val pieces: Map<String, Piece> = emptyMap(),
     val player: Player = Player.White
