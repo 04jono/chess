@@ -12,9 +12,15 @@ import org.springframework.stereotype.Service
 @Service
 class GameService(@Autowired val repo: Repository) {
 
+  /**
+   * Returns the String representation of an integer triple.
+   */
   fun tripleToString(triple: Triple<Int, Int, Int>): String =
       triple.first.toString() + "," + triple.second.toString() + "," + triple.third.toString()
 
+  /**
+   *  Returns the integer triple from a String.
+   */
   fun stringToTriple(s: String): Triple<Int, Int, Int> {
     val split = s.split(",")
     return Triple(
@@ -38,7 +44,8 @@ class GameService(@Autowired val repo: Repository) {
       val movedBoard =
           moveBoard(Board(pieces, player), Move(stringToTriple(initial), stringToTriple(final)))
       val stringMap = movedBoard.pieces.mapKeys { tripleToString(it.key) }
-      return repo.save(BoardModel(boardId, stringMap, player))
+      val newBoard = BoardModel(boardId, stringMap, player);
+      return repo.save(newBoard)
     }
   }
 

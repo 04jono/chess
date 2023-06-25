@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("api")
 class GameController(@Autowired val repo: Repository, @Autowired val gameService: GameService) {
 
-  @GetMapping("string") fun print(@RequestBody id: String): ResponseEntity<String> {
+  @CrossOrigin(origins=["http://localhost:3000"])
+  @GetMapping("string/{id}") fun getString(@PathVariable id: String): ResponseEntity<String> {
     val res = gameService.getString(id)
     return if(res == null){
       ResponseEntity(null, HttpStatus.BAD_REQUEST)
